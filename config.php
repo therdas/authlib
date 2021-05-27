@@ -1,0 +1,3 @@
+<?php
+CONST KEY = '6ccae01c5fbe3261ab817adb24a7b863ede88d11d90d5150597c22393f241eb5';
+?>
