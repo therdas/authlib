@@ -27,13 +27,15 @@ class LoginManager {
         $passwordHash = $this->udb->getPasswordHash($username);
         if($passwordHash != FALSE) 
         {
-            echo "GOTS";
             if(password_verify($password,$passwordHash)) {
-                echo "YESH";
                 return true;
             }
         }   
         return false;
+    }
+
+    public function getEmail(string $username) {
+        return $this->udb->getUserEmail($username);
     }
 
     public function addUser(string $username, string $password): bool {
@@ -43,6 +45,11 @@ class LoginManager {
     public function updatePassword(string $username, string $passwordOld, string $passwordNew): bool {
         return $this->checkIfMatch($username, $passwordOld) && 
                $this->udb->updatePassword($username, password_hash($passwordNew), PASSWORD_DEFAULT);
+    }
+
+    public function updatePasswordWToken(string $username, string $token, string $passwordNew): bool {
+        return $this->verifyAuthToken($token, LoginManager::AS_RESET) && 
+               $this->udb->updatePassword($username, password_hash($passwordNew, PASSWORD_DEFAULT));
     }
 
     public function generateAuthToken(string $username, $storeMethod = LoginManager::AS_REMEMBER){
@@ -74,7 +81,6 @@ class LoginManager {
 
     public function discardToken(string $token, $storeMethod = LoginManager::AS_REMEMBER) {
         list ($username, $t, $hash) = explode(':', $token);
-
         if($storeMethod == LoginManager::AS_REMEMBER)
             return $this->verifyValidableToken($token) && $this->udb->deletePersistentToken($username, hash('sha256',$t));
         else
@@ -82,13 +88,19 @@ class LoginManager {
 
     }
 
+    public function getUsernameFromToken(string $token) {
+        list ($u, $t, $h) = explode(":", $token);
+        return $u;
+    }
+
     private function verifyValidableToken(string $combinedToken): bool {
         list ($username, $token, $hash) = explode(':', $combinedToken);
 
         if(hash_equals(hash_hmac('sha256', $username.$token, KEY), $hash)) {
             return true;
-        } else
+        } else{
             return false;
+        }
     }
 
     private function generateValidableToken(string $input, string $rand): string {

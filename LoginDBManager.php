@@ -18,11 +18,37 @@ class LoginDBManager {
         $this->username   = $options["columns"]["username"]     ?? "username";
         $this->password   = $options["columns"]["password"]     ?? "password";
         $this->reauth_token = $options["columns"]["reauth_token"] ?? "reauth_token";
+        $this->email      = $options["columns"]["email"]        ?? "email";
         $this->timeout    = $options["columns"]["timeout"]      ?? "timeout";
 
         $this->rem_table  = $options["columns"]["auth_table"]   ?? "remember_me";
         $this->auth_token = $options["columns"]["auth_token"]   ?? "auth_token";
         $this->conn       = $connection;
+    }
+
+    public function getUserEmail($username){
+        $queryString = "select ".$this->email." from ".$this->table.
+                       " where ".$this->username." = ?";
+        $query = $this->conn->prepare($queryString);
+
+        if($query == false)
+            return false;
+
+        $query->bind_param("s", $username);
+        $query->execute();
+
+        if($query == false)
+            return false;
+
+        $res = $query->get_result();
+        if($tuple = $res->fetch_assoc()) {
+            $res->free_result();
+            return $tuple[$this->email];
+        } else {
+            return false;
+        }
+
+        return false;
     }
 
     public function getPasswordHash($username){
@@ -43,7 +69,7 @@ class LoginDBManager {
         $res = $query->get_result();
         if($tuple = $res->fetch_assoc()) {
             $res->free_result();
-            return $tuple["password"];
+            return $tuple[$this->password];
         } else {
             return false;
         }
@@ -76,7 +102,7 @@ class LoginDBManager {
 
         $query->bind_param("ss", $passwordHash, $username);
         $query->execute();
-        return $query;
+        return $query == true;
     }
 
     public function storePersistentToken($username, $tokenHash, $timeout):bool {
@@ -102,16 +128,15 @@ class LoginDBManager {
                        " {$this->username} = ? and {$this->auth_token} = ?";
         
         $query = $this->conn->prepare($queryString);
-
         if($query == false)
             return false;
 
         $query->bind_param("ss", $username, $tokenHash);
         $query->execute();
         
-        if($query == false)
+        if($query == false){
             return false;
-        
+        }
         $res = $query->get_result();
         if($tuple = $res->fetch_assoc()){
             $res->free_result();

@@ -12,5 +12,5 @@ else
 */
 require("Auth.php");
 $auth = new Auth(new mysqli("localhost", "root", "", "test"));
-echo $auth->login("root", "root", true);
+$auth->login("root", "root", true);
 ?>
