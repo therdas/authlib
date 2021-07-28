@@ -18,6 +18,10 @@ class Auth {
         $this->login = new LoginManager($connection, $options);
     }
 
+    public function getUsername() {
+        return $_SESSION[$this->usernameSessionID];
+    }
+
     public function isAuthenticated(): bool {
         if(isset($_SESSION[$this->usernameSessionID]))
             return true;
@@ -122,7 +126,6 @@ class Auth {
             "httponly" => TRUE,
             "samesite" => TRUE
         ]); 
-        echo "UNSETTING " . $this->cookieName;
     }
 
     private function setCookie($token) {

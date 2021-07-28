@@ -1,3 +1,9 @@
+<html>
+<head>
+<title>LOGIN PAGE</title>
+<link rel="stylesheet" href="loginpage.css">
+</head>
+<body>
 <?php
 require_once "configLoader.php";
 require_once "Auth.php";
@@ -11,7 +17,6 @@ if(!isset($_GET) || !isset($_GET["token"])) {
 }
 
 $token = urldecode($_GET["token"]);
-echo $token;
 
 $name = $auth->getUsernameFromToken($token);
 
@@ -25,12 +30,20 @@ if(isset($_POST) && isset($_POST["password"])) {
     } else {
         echo "There was a problem resetting your password. Please contact the site administrator.";
     }
-    
+    die;
 }
 ?>
+    <div class="hero-img-login"><img src="images/logo.png" width="150px"></div>
+    <div class="input-card">
+        <h3>Enter your new password: </h3>
+        <form method="POST">
+            <input type="text" name="password" placeholder="Enter your new password">
+            <span class="login-buttons">
+                <input type="submit">
+            </span>
+        </form>
+    </div>
+</body>
+</html>
 
-<p>Enter your new password: </p>
-<form method="POST">
-    <input type="text" name="password" placeholder="Enter your new password">
-    <input type="submit">
-</form>
+

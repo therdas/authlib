@@ -1,6 +1,5 @@
 <?php
 function loadConfig($filename = "config.ini", $directory="") {
-    echo "TEST";
     if($directory === "") {
         $directory = $_SERVER["DOCUMENT_ROOT"];
         
