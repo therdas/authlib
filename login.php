@@ -9,10 +9,11 @@
     require_once "Auth.php";
     $config = loadConfig('config_car_system.ini');
     $auth = new Auth(
-                        new mysqli("localhost", $config["username"], $config["password"], $config["database"])
+                        new mysqli("localhost", $config["username"], $config["password"], $config["database"]),
+                        array("table" => "login_credentials")
                     );
 
-    if($_POST["logout"] ?? false) {
+                    if($_POST["logout"] ?? false) {
         $auth->logout();
         header("Refresh: 0");
         die;
@@ -32,6 +33,9 @@
         $remember = $_POST["remember"] ?? false;
         $username = $_POST["username"] ?? "";
         $password = $_POST["password"] ?? "";
+        $new = false;
+        if($remember == false && $username == "" && $password == "")
+            $new = true;    
 
         if($auth->login($username, $password, $remember)){
             ?>
@@ -42,6 +46,12 @@
                 </div>
             <?php
         } else {
+            if(!$new) {
+                ?>
+                    <p>Invalid Username or Password</p>
+                <?php
+            }
+
             ?>
                 <div class="hero-img-login"><img src="images/logo.png" width="150px"></div>
                 <div class="input-card">
@@ -55,6 +65,14 @@
                             <input type="submit" value="Log In">
                         </span>
                     </form>
+                    <?php
+                        if(!$new) {
+                            ?>
+                                <span class="error">Invalid Username or Password</span>
+                            <?php
+                        }
+                    ?>
+
                 </div>
             <?php
         }

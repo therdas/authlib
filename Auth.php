@@ -5,11 +5,12 @@ if(session_status() != PHP_SESSION_ACTIVE)
     session_start();
 
 class Auth {
-    private $login;
+    public $login;
 
     function __construct(mysqli $connection, $options = false) {
         if(!$options)
             $options = [];
+        
 
         $this->usernameSessionID  = $options["username_var"]   ?? "username";
         $this->loggedinSessionID  = $options["logged_in_var"]  ?? "logged_in";

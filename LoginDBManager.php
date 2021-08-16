@@ -14,14 +14,14 @@ class LoginDBManager {
             $options['columns'] = [];
         }
  
-        $this->table      = $options["columns"]["table"]        ?? "users";
-        $this->username   = $options["columns"]["username"]     ?? "username";
+        $this->table      = $options["table"]                   ?? "login_credentials";
+        $this->username   = $options["columns"]["username"]     ?? "userid";
         $this->password   = $options["columns"]["password"]     ?? "password";
         $this->reauth_token = $options["columns"]["reauth_token"] ?? "reauth_token";
         $this->email      = $options["columns"]["email"]        ?? "email";
         $this->timeout    = $options["columns"]["timeout"]      ?? "timeout";
 
-        $this->rem_table  = $options["columns"]["auth_table"]   ?? "remember_me";
+        $this->rem_table  = $options["auth_table"]              ?? "remember_me";
         $this->auth_token = $options["columns"]["auth_token"]   ?? "auth_token";
         $this->conn       = $connection;
     }
@@ -30,16 +30,14 @@ class LoginDBManager {
         $queryString = "select ".$this->email." from ".$this->table.
                        " where ".$this->username." = ?";
         $query = $this->conn->prepare($queryString);
-
+        echo $queryString;
         if($query == false)
             return false;
-
-        $query->bind_param("s", $username);
+        $query->bind_param("i", $username);
         $query->execute();
 
         if($query == false)
             return false;
-
         $res = $query->get_result();
         if($tuple = $res->fetch_assoc()) {
             $res->free_result();
@@ -47,7 +45,6 @@ class LoginDBManager {
         } else {
             return false;
         }
-
         return false;
     }
 
@@ -60,7 +57,7 @@ class LoginDBManager {
         if($query == false)
             return false;
 
-        $query->bind_param("s", $username);
+        $query->bind_param("i", $username);
         $query->execute();
 
         if($query == false)
@@ -82,13 +79,13 @@ class LoginDBManager {
                         "(".$this->username.",".$this->password.") values (?, ?)";
 
         $query = $this->conn->prepare($queryString);
-
-        if($query == false)
+        
+        if($query == false){
             return false;
+        }
 
-        $query->bind_param("ss", $username, $passwordHash);
+        $query->bind_param("is", $username, $passwordHash);
         $query->execute();
-
         return $query == true;
     }
 
@@ -100,7 +97,7 @@ class LoginDBManager {
         if($query == false)  
             return false;
 
-        $query->bind_param("ss", $passwordHash, $username);
+        $query->bind_param("si", $passwordHash, $username);
         $query->execute();
         return $query == true;
     }
@@ -117,7 +114,7 @@ class LoginDBManager {
         if($query == false)
             return false;
         
-        $query->bind_param("sss", $username, $tokenHash, $time);
+        $query->bind_param("iss", $username, $tokenHash, $time);
         $query->execute();
         return $query == true;
     }
@@ -131,7 +128,7 @@ class LoginDBManager {
         if($query == false)
             return false;
 
-        $query->bind_param("ss", $username, $tokenHash);
+        $query->bind_param("is", $username, $tokenHash);
         $query->execute();
         
         if($query == false){
@@ -160,7 +157,7 @@ class LoginDBManager {
         if($query == false)
             return false;
         
-        $query->bind_param("ss", $username, $tokenHash);
+        $query->bind_param("is", $username, $tokenHash);
         $query->execute();
         return $query == true;
     }
@@ -177,7 +174,7 @@ class LoginDBManager {
         if($query == false)
             return false;
         
-        $query->bind_param("sss", $tokenHash, $time, $username);
+        $query->bind_param("ssi", $tokenHash, $time, $username);
         $query->execute();
         return $query == true;
     }
@@ -192,7 +189,7 @@ class LoginDBManager {
         if($query == false)
             return false;
 
-        $query->bind_param("s", $username);
+        $query->bind_param("i", $username);
         $query->execute();
         
         if($query == false)
@@ -222,7 +219,7 @@ class LoginDBManager {
         if($query == false)
             return false;
         
-        $query->bind_param("s", $username);
+        $query->bind_param("i", $username);
         $query->execute();
         return $query == true;
     }
