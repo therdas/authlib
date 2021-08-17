@@ -3,10 +3,11 @@
     require('functions.inc.php');
     require('sidebar.inc.php');
 
-    if($_SESSION['ADMIN_LOGIN'] != 'yes'){ 
-        ?>
-        <script>window.location.href="index.php";</script>
-    <?php
+    if($auth->isAuthenticated() && $auth->getUserType() == Auth::ADMIN) {
+        ; //do nothing
+    } else {
+        header("location: ../login.php");
+        die();
     }
 ?>
 <?php  
@@ -51,7 +52,7 @@
     
     <div class="main_content">
         <div>
-            <h3 style="float: right; margin-right: 40px;">Welcome, <?php echo $_SESSION['ADMIN_USERNAME'] ?></h3><br>
+            <h3 style="float: right; margin-right: 40px;">Welcome, <?php echo $auth->getUsername(); ?></h3><br>
             <h3 style="margin-left: 1000px;"><a href="logout.php">Logout</a></h3>
         </div>
         <div class="card">
@@ -85,14 +86,15 @@
                                     <td><?php echo $row['PH'] ?></td>
                                     <td><?php echo $row['AADHAR'] ?></td>
                                     <?php 
-                                        $bid=$row['BID'];
-                                        $sql="select * from branch where BID='$bid'";
+                                        $bid=$row['BranchID'];
+                                        $sql="select * from branch where BranchID='$bid'";
                                         $res1=mysqli_query($con,$sql);
                                         if($row1=mysqli_fetch_assoc($res1)){
-                                    ?>
-                                    <td><?php echo $row1['BName'] ?></td>
-                                    <?php
-                                     }
+                                           // prx($row1);
+                                        ?>
+                                            <td><?php echo $row1['BName'] ?></td>
+                                        <?php
+                                        }
                                      else{
                                         ?>
                                         <td> </td>

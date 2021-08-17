@@ -5,8 +5,8 @@ require_once("LoginDBManager.php");
 class LoginManager {
     private $resetTimeout = 60 * 20;
     private $authTimeout  = 60 * 60 * 24 * 7;
-    private int $tokenLength;
-    private LoginDBManager $udb;    
+    // private int $tokenLength;
+    // private LoginDBManager $udb;    
 
     const AS_REMEMBER = 0;
     const AS_RESET    = 1;

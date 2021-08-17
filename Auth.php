@@ -7,6 +7,11 @@ if(session_status() === PHP_SESSION_NONE)
 class Auth {
     private $login;
 
+    const ADMIN = 1;
+    const EMPLOYEE = 2;
+    const ACCOUNTANT = 4;
+    const OTHER = 8;
+
     function __construct(mysqli $connection, $options = false) {
         if(!$options)
             $options = [];
@@ -61,6 +66,44 @@ class Auth {
     public function getEmail(string $username) {
         return $this->login->getEmail($username);
     }   
+
+    public function getUserType(): int {
+        switch($this->getUsername()[0]) {
+            case 'S':
+            case 's':
+                return Auth::ADMIN;
+            case 'A':
+            case 'a':
+                return Auth::ACCOUNTANT;
+            case 'E':
+            case 'e':
+                return Auth::EMPLOYEE;
+            case 'O':
+            case 'o':
+                return Auth::OTHER;
+            default:
+                return Auth::OTHER;     //Assume most restricted view as default.
+        }
+    }
+
+    public function getStringUserType() {
+        switch($this->getUsername()[0]) {
+            case 'S':
+            case 's':
+                return "Administrator";
+            case 'A':
+            case 'a':
+                return "Accountant";
+            case 'E':
+            case 'e':
+                return "Salesperson";
+            case 'O':
+            case 'o':
+                return "Other Employee";
+            default:
+                return "Other Employee";     //Assume most restricted view as default.
+        }
+    }
 
     public function getUsernameFromToken($token) {
         return $this->login->getUsernameFromToken($token);

@@ -22,7 +22,7 @@
         <div class="inside">
             <div class="logo-container">
                 <img src="/RAS/media/images/elonMask.jpg" width="100px" height="100px">
-                <h1>Elon Mask</h1>
+                <h1><?php echo $auth->getUsername(); ?></h1>
                 <h4>Admin</h4>
             </div>  
             

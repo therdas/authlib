@@ -15,7 +15,9 @@
 <?php
 
     $userId=$_SESSION['SALESPERSON_USERNAME'];
+    
     $sql="select * from users where UserId='$userId'";
+    
     $res=mysqli_query($con,$sql);
     if($res == true){
         if($row=mysqli_fetch_assoc($res)){
@@ -25,7 +27,7 @@
         ?>
             <script>
                 alert("Something went wrong, try later");
-                window.location.href='/RAS/index.php';
+               window.location.href='/RAS/index.php';
             </script>
         <?php
         }
@@ -54,33 +56,12 @@
             This form generates a report of the sales of artwork by a given artist in a given time period, along with the total sale figures.
         </div><br><br>
         <div>
-            <form action="allBranchReport.php" class="report-form" method="post" target="_blank">
+            <form action="salesPersonReport.php" class="report-form" method="post" target="_blank">
                 
-                <button style="width: 90%; height: 50px; margin-left: 20px; cursor: pointer;" type="submit" class="submit-btn" value="Submit" name="submit">Generate All Branches Report</button>
+                <button style="width: 90%; height: 50px; margin-left: 20px; cursor: pointer;" type="submit" class="submit-btn" value="Submit" name="submit">See Your Sales Report</button>
             </form>
         </div><br><br>
-        <div>
-            <form action="oneBranchReport.php" class="report-form" method="post" target="_blank">
-                <select style="width: 70%; height: 50px; margin-left: 20px; cursor: pointer;" name="BId" value="">
-                    <option>Select Branch</option>
-                     <?php 
-                        $sql="select * from branch";
-                        $res=mysqli_query($con,$sql); 
-                    ?>
-                    <?php
-                        while($row=mysqli_fetch_assoc($res)){
-                    ?>
-                    <option value="<?php echo $row['BID'] ?>"><?php echo $row['BName'] ?></option>
-                        
-                    <?php 
-                        }
-                    ?>
-                </select>
-                <button style="width: 18%; height: 50px; margin-left: 20px; cursor: pointer;" type="submit" class="submit-btn" value="Submit" name="submit">Generate Branch Report</button>
-
-                <!-- <input type="submit" style="float: right; margin-right: 50%; background: cyan; padding: 15px" value="Submit" name="submit"> -->
-            </form>
-        </div>
+        
     </div>
 </body>
 </html>

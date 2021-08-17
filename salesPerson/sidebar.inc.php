@@ -50,8 +50,8 @@ else{
         <h4>Logged In as Sales Person</h4>
     </div>
         
-            
-  </a>
-        </ul> 
+    <div style="margin-left: 9%; margin-top: 10%">
+        <a style="color: black;" href="index.php">Sales Report</a>
     </div>
     <!-- side bar ends -->
+</div>

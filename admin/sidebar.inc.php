@@ -1,3 +1,7 @@
+<?php
+require_once("../UserPicture.php");
+$uri = getImageURL($auth->getUsername());
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +18,9 @@
 <div class="wrapper">
     <div class="sidebar">
         <div style="margin-left: 10%">
-        <img src="/RAS/media/images/elonMask.jpg" width="100px" height="100px">
-        <h1>Elon Mask</h1>
-        <h4>Admin</h4>
+        <img src="/RAS/media/images/<?php echo $uri;?>" width="100px" height="100px">
+        <h1><?php echo $auth->getUsername(); ?></h1>
+        <h4><?php echo $auth->getStringUserType(); ?></h4>
     </div>
     <div style="margin-left: 10%; margin-top: 20%;">
         <a style="color: black;" href="index.php">Create Report</a><br><br>

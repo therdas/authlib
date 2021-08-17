@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $con=mysqli_connect('localhost',"root","","ras");
+    $con=mysqli_connect('localhost',"root","","rasdb");
     define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT'].'/RAS/');
     define('SITE_PATH','http://'.$_SERVER["HTTP_HOST"].'/RAS/');
 
