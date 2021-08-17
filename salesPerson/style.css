@@ -1,0 +1,509 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    background: #FFF;
+    width: 100%;
+    /* background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    font-family: 'Barlow';
+}
+
+a{
+    color:#0054BB;
+}
+
+.sign-up-form .heading{
+    padding: 10px 10px 25px 10px;
+    text-align: center;
+    font-size: 1em;
+    border-bottom: 3px solid black;
+    margin-bottom: 2.3em;
+}
+.sign-up-form{
+    width: 350px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.3);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10em calc(50% - 175px);
+    /* text-align: center; */
+}
+
+.sign-up-form.new-user-form {
+    width: 550px;
+    margin: 10em calc(50% - 275px);
+}
+.sign-up-form input{
+    padding: 5px;
+    margin: 5px;
+    width: 65% !important;
+}
+.sign-up-form label{
+    padding: 0.5em;
+    text-align: center;
+    width: 30%;
+    display: inline-block;
+    text-align: right;
+}
+.sign-up-form input[type=text], input[type=password]{
+    margin: 0.25em 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 0.75em 1em;
+    font-family: 'Barlow', 'Arial', sans-serif;
+}
+.sign-up-form button{
+    width: 100%;
+    background: #0074DB;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3em 0.3em;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: white;
+    margin:  1em 0;
+    font-family: 'Barlow', 'Arial', sans-serif;
+}
+.sign-up-form button:hover{
+    background: #0054BB;
+}
+
+.field-error{
+    color: red;
+}
+
+/*  -------------------------------top.inc.php */
+
+#sidenav {
+    display: block;
+    text-align: right;
+    min-height: 100vh;
+    width: 20em;
+    text-align: right;
+    z-index: 1;
+    background-color: #FFF;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+#sidenav > .inside {
+    padding-top: 3em;
+    display: block;
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+#sidenav::before {
+    content: '';
+    position: absolute;
+    top: 0; left:0; right: 0; bottom:0;
+    background-image: url("topography.svg");
+    filter: opacity(0.15);
+    z-index: -1;
+}
+
+#content {
+    max-width: calc(100% - 20em);
+    flex-grow: 2;
+    padding: 0 2em;
+    margin-left: 20em;
+}
+.logo-container {
+    margin: 0 3em 3em 3em;
+}
+.logo{
+    font-family: 'Raleway', sans-serif;
+    display: inline-block;
+    background-color:black;
+    color: white;
+    width: 5em;
+    height: 5em;
+    position: relative;
+}
+.logo > b {
+    display: block;
+    position: absolute;
+    bottom: 0.5em;
+    left:0.5em;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.logo-container > h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+
+.nav-item {
+    display: block;
+    padding: 0.75em 3em 0.75em 0.75em;
+    color: black;
+}
+
+.nav-item:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.logo-container > h1 {
+    display: inline-block;
+    width: 7em;
+    text-align: right;
+    margin-top: 1em;
+}
+.logo-container > h4 {
+    display: inline-block;
+    width: 10em;
+    text-align: right;
+    font-weight: 300;
+    margin-top: 0.5em;
+    opacity: 0.75;
+}
+
+.login-container {
+    margin-right: 3em;
+    display: block;
+}
+
+.login-container > span > a {
+    display: inline-block;
+    padding: 0.75em 0.25em;
+}
+
+/* Index  page*/
+.best-seller .heading{
+    font-family: 'Raleway', sans-serif;
+    margin-top: 9em;
+}
+.best-seller .heading h1{
+    padding: 10px;
+    font-size: 50px;
+    font-weight: 100;
+}
+
+.description {
+    padding: 10px;
+}
+
+.row-img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+    max-height: 100vh;
+}
+.column-img{
+    padding: 10px;
+    box-sizing: border-box;
+}
+.column-img img{
+    overflow:hidden;
+    max-height: 25vh;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .15);
+}
+
+h4 {
+    font-weight: normal;
+}
+h5 {
+    font-weight: normal;
+    opacity: 0.35;
+}
+
+
+/* ------------------------Admin panel starts---------------------------- */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  .body-admin-panel{
+     background-color: #f3f5f9;
+  }
+  
+  .wrapper{
+    display: flex;
+    position: relative;
+  }
+  
+  .wrapper .sidebar{
+    width: 200px;
+    height: 100%;
+    background: #4b4276;
+    padding: 30px 0px;
+    position: fixed;
+  }
+  
+  .wrapper .sidebar h2{
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .wrapper .sidebar ul li{
+    padding: 15px;
+    border-bottom: 1px solid #bdb8d7;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }    
+  
+  .wrapper .sidebar ul li a{
+    color: #bdb8d7;
+    display: block;
+  }
+  
+  
+  .wrapper .sidebar ul li:hover{
+    background-color: #7b749c;
+  }
+      
+  .wrapper .sidebar ul li:hover a{
+    color: #fff;
+  }
+   
+  
+  .wrapper .main_content{
+    width: 100%;
+    margin-left: 200px;
+  }
+  
+  .wrapper .main_content .header{
+    padding: 20px;
+    background: #fff;
+    color: #717171;
+    border-bottom: 1px solid #e0e4e8;
+  }
+  
+  .wrapper .main_content .info{
+    margin: 20px;
+    color: #717171;
+    line-height: 25px;
+  }
+  
+  .wrapper .main_content .info div{
+    margin-bottom: 20px;
+  }
+
+.card{
+    margin-bottom: 1.875em;
+    border-radius: 5px;
+    padding: 0;
+    border: 0 solid yellow;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .08);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .08);
+    text-align: center;
+}
+
+.card .box-title{
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px 0
+}
+.card .box-link{
+    padding: 5px;
+    float: left;
+}
+.card .box-link a{
+    border: 1px solid yellow;
+    background: cyan;
+    padding: 5px;
+}
+.box-table{
+    padding: 5px;
+}
+.box-table td,th{
+    padding-right: 30px;
+    padding-top: 10px;
+    text-align: center;
+}
+.box-table th{
+    background: rgb(161, 149, 149);
+}
+.box-table .edit a{
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 25px;
+    background: green;
+}
+.box-table .delete a{
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 25px;
+    
+    background: red;
+}
+.box-table .delete a:hover{
+    border: 1px solid red;
+    background: white;
+    color: red;
+}
+.box-table .edit a:hover{
+    border: 1px solid green;
+    background: white;
+    color: green;
+}
+
+
+
+
+/* Order form */
+.order-form .heading{
+    padding: 10px 10px 25px 10px;
+    text-align: center;
+    font-size: 1em;
+    border-bottom: 3px solid black;
+    margin-bottom: 1.5em;
+}
+.order-form{
+    width: 700px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 3% auto;
+    /* text-align: center; */
+}
+.order-form input{
+    padding: 5px;
+    margin: 5px;
+}
+.order-form label{
+    padding: 5px;
+    display: inline-block;
+    width: 10em;
+    text-align: right;
+}
+.order-form input[type=text], input[type=password], input[type=number]{
+    width: 70%;
+    
+}
+.order-form button{
+    width: 100%;
+    background: #0074DB;
+    border: none;
+    border-radius: 5px;
+    padding: 0.3em 0.3em;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: white;
+    margin:  1em 0;
+    font-family: 'Barlow', 'Arial', sans-serif;
+}
+.order-form button:hover{
+    background: #0054BB;
+}
+
+
+
+/*--------------------------- For buy.php file ------------------------------*/
+.buy-img {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: -3em;
+}
+
+.art-column {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+    max-height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .50);
+
+}
+
+.art-column > .backdrop {
+    position: absolute;
+    top: 0;
+    bottom :0;
+    left :0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    filter: blur(20px);
+    overflow: hidden;
+    opacity: 0.3;
+}
+
+.art-column > img {
+    height:100vh;
+    width: 100%;
+    object-fit: contain;
+}
+
+.buy-column {
+    display: block;
+    padding: 10em 2em 2em 2em;
+}
+
+.buy-column > span {
+    display: block;
+    margin-bottom: 1em;
+    text-transform: capitalize;
+}
+
+.buy-column > h1 {
+    font-size: 3em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    margin-bottom: 0.5em;
+}
+
+.buy-column > h1::after {
+    content: '';
+    display: block;
+    background-color: black;
+    width: 1em;
+    height: 2px;
+    margin-top: 0.5em;
+}
+
+.buy-column > a.btn {
+    display: block;
+    width: 100%;
+    padding: 1em 1.25em;
+    background-color: #0074DB;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+}
+.buy-column > a.btn:hover {
+
+    background-color: #0054BB;
+
+}
+
+.red {
+    background-color: red !important;
+    cursor:none;
+    pointer-events: none;
+}
+
+.admin-item {
+    color: rgba(0, 127, 255, 1);
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+* {
+  font-family: 'Barlow', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.body-index{
+    margin: 0;
+    padding: 0;
+    background: rgb(54, 52, 47);
+}
+
+.sign-up-form .heading{
+  padding: 10px 10px 25px 10px;
+  text-align: center;
+  font-size: 1em;
+  border-bottom: 3px solid black;
+  margin-bottom: 1em;
+}
+.sign-up-form{
+    width: 350px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.75);
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Barlow', Verdana, Geneva, Tahoma, sans-serif;
+    margin: 8% auto;
+    /* text-align: center; */
+}
+.sign-up-form input{
+    padding: 5px;
+    margin: 5px;
+}
+.sign-up-form label{
+    padding: 5px;
+    margin: px;
+}
+.sign-up-form input[type=text], input[type=password]{
+    width: 95%;
+}
+.sign-up-form button{
+  width: 100%;
+  background: #0074DB;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3em 0.3em;
+  box-sizing: border-box;
+  font-size: 20px;
+  color: white;
+  margin:  1em 0;
+  font-family: 'Barlow', 'Arial', sans-serif;
+}
+.sign-up-form button:hover{
+    background: #0054BB;
+}
+
+.field-error{
+    color: red;
+}
+.sign-up-form input[type=text], input[type=password]{
+    margin: 0.25em 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 0.75em 1em;
+    font-family: 'Barlow', 'Arial', sans-serif;
+    outline: none;
+}
+.sign-up-form input[type=text]:focus, input[type=password]:focus{
+    margin: 0.25em 0;
+    box-sizing: border-box;
+    border: 1px solid #0054BB;;
+    border-radius: 5px;
+    padding: 0.75em 1em;
+    font-family: 'Barlow', 'Arial', sans-serif;
+    outline: none;
+}
+
+/* ----------------------End Login page(index page) */

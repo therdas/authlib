@@ -9,8 +9,7 @@
     require_once "Auth.php";
     $config = loadConfig('config_car_system.ini');
     $auth = new Auth(
-                        new mysqli("localhost", $config["username"], $config["password"], $config["database"]),
-                        array("table" => "login_credentials")
+                        new mysqli("localhost", $config["username"], $config["password"], $config["database"])
                     );
 
                     if($_POST["logout"] ?? false) {

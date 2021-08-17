@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+* {
+  font-family: 'Barlow', Verdana, Geneva, Tahoma, sans-serif;
+}
+.fetch-report-body{
+    margin: 0;
+    padding: auto;
+    text-align: center;
+}
+table{
+    width: 100% !important;
+}
+.fetch-report-table_ .mytable th,td{
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.fetch-report-table .mytable{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: auto;
+    margin: 20px auto;
+}
+.fetch-report-table .mytable tr{
+    text-align: center;
+}
+.printButton{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 20px;
+    font-size: 18px;
+    background-color: gray;
+    margin-left: 50%;
+    border-radius: 3px;
+}
+.fetch-report-heading > h2{
+    text-align: center;
+    margin-top: 10px;
+}
+
+/*------table-------*/
+th{
+   background-color: rgba(0, 0, 0, 0.25);
+   border: 1px solid rgba(0, 0, 0, 0.25);
+}
+th, td {
+    padding: 0.25em;
+}
+/*------Logo------*/
+.logo-container {
+    margin: 3em;
+    display: inline-flex;
+}
+.logo{
+    font-family: 'Raleway', sans-serif;
+    display: inline-block;
+    background-color:black;
+    color: white;
+    width: 5em;
+    height: 5em;
+    position: relative;
+}
+.logo > b {
+    display: block;
+    position: absolute;
+    bottom: 0.5em;
+    left:0.5em;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.logo-container > span > h1, .logo-container > span > h4 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    text-transform: lowercase;
+    margin: 0;
+    display: block;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.logo-container > span > h1 {
+    margin-top: 1em;
+}
+
+.logo-container > span > h4 {
+    opacity: 0.5;
+}
+.fetch-report-table {
+    width: 75%;
+    display: inline-block;
+}
+
+/*-------------Top Display Styles---------------*/
+
+.fetch-report-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.fetch-report-heading {
+    flex-grow: 1;
+}
+
+.fetch-report-heading > h4, .fetch-report-heading > h2{
+    display: block;
+    margin: 0;
+}
+
+.fetch-report-heading > h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5em;
+    font-weight: 300;
+}
+.fetch-report-heading > span {
+    display: block;
+    padding: 0.25em;
+}
+
+.fetch-report-heading > span > b {
+    display: inline-block;
+    width: 10em;
+    text-align: right;
+}
+.fetch-report-heading > span > i {
+    display: inline-block;
+    width: 15em;
+    text-align: left;
+    padding-left: 0.75em;
+}
+
+.fetch-report-artist-profile {
+    display: block;
+    flex-grow: 1;
+}
+
+.fetch-report-artist-profile > h4, .fetch-report-artist-profile > h2{
+    display: block;
+    margin: 0;
+}
+
+.fetch-report-artist-profile > h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.fetch-report-artist-profile > span {
+    display: block;
+    padding: 0.25em;
+}
+
+.fetch-report-artist-profile > span > b {
+    display: inline-block;
+    width: 10em;
+    text-align: right;
+}
+.fetch-report-artist-profile > span > i {
+    display: inline-block;
+    width: 15em;
+    text-align: left;
+    padding-left: 0.75em;
+}
+
+/*----------------Print Settings-------------------*/
+
+@media print{
+    .printButton{
+        visibility: hidden;
+    }
+    /* #download{
+        visibility: hidden;
+    } */
+    .fetch-report-artist-profile > span > b {
+        text-align: center;
+    }
+    .fetch-report-artist-profile > span > i {
+        text-align: center;
+    }
+    .fetch-report-heading > span > b {
+        text-align: center;
+    }
+    .fetch-report-heading > span > i {
+        text-align: center;
+    }
+}

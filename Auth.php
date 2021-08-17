@@ -1,11 +1,11 @@
 <?php
 require_once("LoginManager.php");
 
-if(session_status() != PHP_SESSION_ACTIVE)
+if(session_status() === PHP_SESSION_NONE)
     session_start();
 
 class Auth {
-    public $login;
+    private $login;
 
     function __construct(mysqli $connection, $options = false) {
         if(!$options)
@@ -17,6 +17,10 @@ class Auth {
         $this->cookieName         = $options["cookie_name"]    ?? "sessionid";
 
         $this->login = new LoginManager($connection, $options);
+    }
+
+    public function addUser(string $username, string $password): bool {
+        return $this->login->addUser($username, $password);
     }
 
     public function getUsername() {
